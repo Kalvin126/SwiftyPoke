@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		863807C41C31D250006C08CC /* SwiftyPoké.h in Headers */ = {isa = PBXBuildFile; fileRef = 863807C31C31D250006C08CC /* SwiftyPoké.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		863807C41C31D250006C08CC /* SwiftyPoke.h in Headers */ = {isa = PBXBuildFile; fileRef = 863807C31C31D250006C08CC /* SwiftyPoke.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		863807CD1C31D603006C08CC /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863807CB1C31D603006C08CC /* Pokemon.swift */; };
-		863807CE1C31D603006C08CC /* SwiftyPoké.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863807CC1C31D603006C08CC /* SwiftyPoké.swift */; };
+		863807CE1C31D603006C08CC /* SwiftyPoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863807CC1C31D603006C08CC /* SwiftyPoke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		863807C01C31D250006C08CC /* SwiftyPoke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyPoke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		863807C31C31D250006C08CC /* SwiftyPoké.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftyPoké.h"; sourceTree = "<group>"; };
+		863807C31C31D250006C08CC /* SwiftyPoke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyPoke.h; sourceTree = "<group>"; };
 		863807C51C31D250006C08CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		863807CB1C31D603006C08CC /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
-		863807CC1C31D603006C08CC /* SwiftyPoké.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyPoké.swift"; sourceTree = "<group>"; };
+		863807CC1C31D603006C08CC /* SwiftyPoke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPoke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,7 +34,7 @@
 		863807B61C31D250006C08CC = {
 			isa = PBXGroup;
 			children = (
-				863807C21C31D250006C08CC /* SwiftyPoké */,
+				863807C21C31D250006C08CC /* SwiftyPoke */,
 				863807C11C31D250006C08CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,14 +47,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		863807C21C31D250006C08CC /* SwiftyPoké */ = {
+		863807C21C31D250006C08CC /* SwiftyPoke */ = {
 			isa = PBXGroup;
 			children = (
-				863807C31C31D250006C08CC /* SwiftyPoké.h */,
-				863807CC1C31D603006C08CC /* SwiftyPoké.swift */,
+				863807C31C31D250006C08CC /* SwiftyPoke.h */,
+				863807CC1C31D603006C08CC /* SwiftyPoke.swift */,
 				863807CB1C31D603006C08CC /* Pokemon.swift */,
 				863807C51C31D250006C08CC /* Info.plist */,
 			);
+			name = SwiftyPoke;
 			path = "SwiftyPoké";
 			sourceTree = "<group>";
 		};
@@ -65,7 +66,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				863807C41C31D250006C08CC /* SwiftyPoké.h in Headers */,
+				863807C41C31D250006C08CC /* SwiftyPoke.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				863807CE1C31D603006C08CC /* SwiftyPoké.swift in Sources */,
+				863807CE1C31D603006C08CC /* SwiftyPoke.swift in Sources */,
 				863807CD1C31D603006C08CC /* Pokemon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

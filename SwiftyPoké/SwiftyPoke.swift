@@ -1,6 +1,6 @@
 //
-//  SwiftyPoké.swift
-//  SwiftyPoké
+//  SwiftyPoke.swift
+//  SwiftyPoke
 //
 //  Created by Kalvin Loc on 12/7/15.
 //  Copyright © 2015 redpanda. All rights reserved.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class SwiftyPoké {
+public class SwiftyPoke {
 
-    public static let shared = SwiftyPoké()
+    public static let shared = SwiftyPoke()
     public var verbose = false
 
     private let APIURL = "http://pokeapi.co"
@@ -235,7 +235,7 @@ public class SwiftyPoké {
             self.getDataWithURI(fetchedSprite.imageURI!) { (data, response, error)  in
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     guard let data = data where error == nil else {
-                        if verbose { print("Failed to retrieve: \(sprite.imageURI!)") }
+                        if self.verbose { print("Failed to retrieve: \(sprite.imageURI!)") }
                         return
                     }
 
