@@ -8,7 +8,7 @@ Usage:
 
 .. code-block:: swift
 
-    import SwiftyPoké
+    import SwiftyPoke
 
     SwiftyPoke.shared.fillNationalPokédex { (success) -> Void in
         if success {
