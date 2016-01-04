@@ -2,9 +2,12 @@ SwiftyPoke
 ==================
 
 Swift Framework Wrapper for Pokémon Database pokeapi.co
+Currently, data is only cached by instance/session.
 
 Usage:
 ............
+
+When you want to retrieve a resource, call SwiftyPoke.shared.get*****(resource) to fetch or retrieve a cached version.
 
 .. code-block:: swift
 
@@ -26,4 +29,5 @@ Usage:
 TODO: 
 ........
 
+- Documentation
 - Data Persistance
