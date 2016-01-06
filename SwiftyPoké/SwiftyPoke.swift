@@ -44,7 +44,9 @@ public class SwiftyPoke {
 
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! Dictionary<String, AnyObject>
-                completion(response: json)
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(response: json)
+                }
 
             } catch {
                 if self.verbose { print("\(error)")}
@@ -54,7 +56,9 @@ public class SwiftyPoke {
 
     private func getDataWithURI(uri: String, completion: ((data: NSData?, response: NSURLResponse?, error: NSError?) -> Void)) {
         NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: APIURL + uri)!) { (data, response, error) in
-            completion(data: data, response: response, error: error)
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(data: data, response: response, error: error)
+            }
             }.resume()
     }
 
