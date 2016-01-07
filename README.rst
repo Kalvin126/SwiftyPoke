@@ -13,13 +13,13 @@ When you want to retrieve a resource, call SwiftyPoke.shared.get*****(resource) 
 
     import SwiftyPoke
 
-    SwiftyPoke.shared.fillNationalPokédex { (success) -> Void in
+    SwiftyPoke.fillNationalPokédex { (success) -> Void in
         if success {
-            let pokedex = SwiftyPoke.shared.getPokédex()
-            SwiftyPoke.shared.getPokémon(pokedex[0]) { (pokémon) -> Void in
+            let pokedex = SwiftyPoke.getPokédex()
+            SwiftyPoke.getPokémon(pokedex[0]) { (pokémon) -> Void in
                 print("Fetched \(pokémon.name)")
 
-                SwiftyPoke.shared.getSprite(pokémon.sprites[0]) { (sprite) -> Void in
+                SwiftyPoke.getSprite(pokémon.sprites[0]) { (sprite) -> Void in
                     let image = UIImage(data: sprite.image!)
                 }
             }
