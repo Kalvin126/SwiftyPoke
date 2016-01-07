@@ -9,12 +9,12 @@
 import Foundation
 
 public class SwiftyPoke {
+    private var verbose = false
 
-    public static let shared = SwiftyPoke()
-    public var verbose = false
-
+    private static let shared = SwiftyPoke()
     private let APIURL = "http://pokeapi.co"
 
+    // Caches
     private var pokémon         = [Int : Pokémon]()
     private var types           = [Int : Type]()
     private var moves           = [Int : Move]()
@@ -62,22 +62,21 @@ public class SwiftyPoke {
             }.resume()
     }
 
-    public func fillNationalPokédex(completion: (success: Bool) -> Void) {
-        getResponseWithURI("/api/v1/pokedex/1/") { (response: Dictionary<String, AnyObject>) -> Void in
+    public static func fillNationalPokédex(completion: (success: Bool) -> Void) {
+        SwiftyPoke.shared.getResponseWithURI("/api/v1/pokedex/1/") { (response: Dictionary<String, AnyObject>) -> Void in
             let rawPokémonData = response["pokemon"] as! NSArray
 
             for p in rawPokémonData {
                 let pokémon = Pokémon(info: p as! Dictionary<String, AnyObject>)
 
-                self.pokémon[pokémon.nationalID] = pokémon
-                if self.pokémon.count > 20 {
-                    break;
-                }
+                SwiftyPoke.shared.pokémon[pokémon.nationalID] = pokémon
             }
 
             completion(success: true)
         }
     }
+
+    // MARK: Resource fetch funcs
 
     private func checkForCache(resource: Any) -> Any? {
         switch resource {
@@ -136,130 +135,130 @@ public class SwiftyPoke {
         return nil
     }
 
-    public func getPokédex() -> [Pokémon] {
-        return Array(pokémon.values).sort { $0.nationalID < $1.nationalID }
+    public static func getPokédex() -> [Pokémon] {
+        return Array(SwiftyPoke.shared.pokémon.values).sort { $0.nationalID < $1.nationalID }
     }
 
-    public func getPokémon(pokémon: Pokémon, completion: (pokémon: Pokémon) -> Void) {
-        if let cached = checkForCache(pokémon) as? Pokémon {
+    public static func getPokémon(pokémon: Pokémon, completion: (pokémon: Pokémon) -> Void) {
+        if let cached = SwiftyPoke.shared.checkForCache(pokémon) as? Pokémon {
             completion(pokémon: cached)
             return
         }
 
         // pokedex/1/ returns URIs without leading /
-        getResponseWithURI("/" + pokémon.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
+        SwiftyPoke.shared.getResponseWithURI("/" + pokémon.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
             let retPoké = Pokémon(info: response)
-            self.pokémon[pokémon.nationalID] = retPoké
+            SwiftyPoke.shared.pokémon[pokémon.nationalID] = retPoké
 
             completion(pokémon: retPoké)
         }
     }
 
-    public func getType(type: Type, completion: (type: Type) -> Void) {
-        if let cached = checkForCache(type) as? Type {
+    public static func getType(type: Type, completion: (type: Type) -> Void) {
+        if let cached = SwiftyPoke.shared.checkForCache(type) as? Type {
             completion(type: cached)
             return
         }
 
-        getResponseWithURI(type.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
+        SwiftyPoke.shared.getResponseWithURI(type.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
             let retType = Type(info: response)
-            self.types[retType.id] = retType    // cache fetched resource
+            SwiftyPoke.shared.types[retType.id] = retType    // cache fetched resource
 
             completion(type: retType)
         }
     }
 
-    public func getMove(move: Move, completion: (move: Move) -> Void) {
-        if let cached = checkForCache(move) as? Move {
+    public static func getMove(move: Move, completion: (move: Move) -> Void) {
+        if let cached = SwiftyPoke.shared.checkForCache(move) as? Move {
             completion(move: cached)
             return
         }
 
-        getResponseWithURI(move.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
+        SwiftyPoke.shared.getResponseWithURI(move.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
             let retMove = Move(info: response)
-            self.moves[retMove.id] = retMove
+            SwiftyPoke.shared.moves[retMove.id] = retMove
 
             completion(move: retMove)
         }
     }
 
-    public func getAbility(ability: Ability, completion: (ability: Ability) -> Void) {
-        if let cached = checkForCache(ability) as? Ability {
+    public static func getAbility(ability: Ability, completion: (ability: Ability) -> Void) {
+        if let cached = SwiftyPoke.shared.checkForCache(ability) as? Ability {
             completion(ability: cached)
             return
         }
 
-        getResponseWithURI(ability.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
+        SwiftyPoke.shared.getResponseWithURI(ability.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
             let retAbility = Ability(info: response)
-            self.abilities[retAbility.id] = retAbility
+            SwiftyPoke.shared.abilities[retAbility.id] = retAbility
 
             completion(ability: retAbility)
         }
     }
 
-    public func getEggGroup(eggGroup: EggGroup, completion: (eggGroup: EggGroup) -> Void) {
-        if let cached = checkForCache(eggGroup) as? EggGroup {
+    public static func getEggGroup(eggGroup: EggGroup, completion: (eggGroup: EggGroup) -> Void) {
+        if let cached = SwiftyPoke.shared.checkForCache(eggGroup) as? EggGroup {
             completion(eggGroup: cached)
             return
         }
 
-        getResponseWithURI(eggGroup.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
+        SwiftyPoke.shared.getResponseWithURI(eggGroup.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
             let retEggGroup = EggGroup(info: response)
-            self.eggGroups[retEggGroup.id] = retEggGroup
+            SwiftyPoke.shared.eggGroups[retEggGroup.id] = retEggGroup
 
             completion(eggGroup: retEggGroup)
         }
     }
 
-    public func getDescription(description: Description, completion: (description: Description) -> Void) {
-        if let cached = checkForCache(description) as? Description {
+    public static func getDescription(description: Description, completion: (description: Description) -> Void) {
+        if let cached = SwiftyPoke.shared.checkForCache(description) as? Description {
             completion(description: cached)
             return
         }
 
-        getResponseWithURI(description.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
+        SwiftyPoke.shared.getResponseWithURI(description.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
             let retDescription = Description(info: response)
-            self.descriptions[retDescription.id] = retDescription
+            SwiftyPoke.shared.descriptions[retDescription.id] = retDescription
 
             completion(description: retDescription)
         }
     }
 
-    public func getSprite(sprite: Sprite, completion: (sprite: Sprite) -> Void) {
-        if let cached = checkForCache(sprite) as? Sprite {  // check local cache
+    public static func getSprite(sprite: Sprite, completion: (sprite: Sprite) -> Void) {
+        if let cached = SwiftyPoke.shared.checkForCache(sprite) as? Sprite {  // check local cache
             completion(sprite: cached)
             return
         }
 
-        getResponseWithURI(sprite.resourceURI) { (response) -> Void in
+        SwiftyPoke.shared.getResponseWithURI(sprite.resourceURI) { (response) -> Void in
             var fetchedSprite = Sprite(info: response)
             fetchedSprite.pokémon = sprite.pokémon
 
             // fetch spriteImg as well
-            self.getDataWithURI(fetchedSprite.imageURI!) { (data, response, error)  in
+            SwiftyPoke.shared.getDataWithURI(fetchedSprite.imageURI!) { (data, response, error)  in
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     guard let data = data where error == nil else {
-                        if self.verbose { print("Failed to retrieve: \(sprite.imageURI!)") }
+                        if SwiftyPoke.shared.verbose { print("Failed to retrieve: \(sprite.imageURI!)") }
                         return
                     }
 
                     fetchedSprite.image = data
-                    self.sprites[sprite.id] = fetchedSprite
+                    SwiftyPoke.shared.sprites[sprite.id] = fetchedSprite
                     completion(sprite: fetchedSprite)
                 }
             }
         }
     }
 
-    public func getGame(game: Game, completion: (game: Game) -> Void) {
-        if let cached = checkForCache(game) as? Game {
+    public static func getGame(game: Game, completion: (game: Game) -> Void) {
+        if let cached = SwiftyPoke.shared.checkForCache(game) as? Game {
             completion(game: cached)
             return
         }
 
-        getResponseWithURI(game.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
+        SwiftyPoke.shared.getResponseWithURI(game.resourceURI) { (response: Dictionary<String, AnyObject>) -> Void in
             let retGame = Game(info: response)
-            self.games[retGame.id] = retGame
+            SwiftyPoke.shared.games[retGame.id] = retGame
 
             completion(game: retGame)
         }

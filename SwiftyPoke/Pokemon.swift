@@ -31,7 +31,7 @@ public struct Pokémon {
     public var height: String?
     public var weight: String?
     public var happiness: Int?
-    public var maleFemalRatio: String? //in the format M / F
+    public var maleFemalRatio: String? // in the format M / F
 
     public var abilities: Array<Ability> = []
     public var descriptions: Array<Description> = []
@@ -312,9 +312,7 @@ public struct Description {
 
             self.desc = desc
 
-            for rawPokémon in info["pokemon"] as! NSArray {
-                pokémon.append(Pokémon(info: rawPokémon as! Dictionary<String, AnyObject>))
-            }
+            pokémon.append(Pokémon(info: info["pokemon"] as! Dictionary<String, AnyObject>))
         } else {
             // short data
             name = (info["name"] as! String).capitalizedString
