@@ -62,6 +62,13 @@ public class SwiftyPoke {
             }.resume()
     }
 
+    /**
+     Fetches pokémon and fill pokédex. Note that this only fetches names and resource URI's for all Pokémon
+     Pass a Pokémon to getPokémon to fetch complete Pokémon data
+     Must call this function before calling getPokédex().
+
+     - parameter completion: Closure that is called once Pokédex is filled
+     */
     public static func fillNationalPokédex(completion: (success: Bool) -> Void) {
         SwiftyPoke.shared.getResponseWithURI("/api/v1/pokedex/1/") { (response: Dictionary<String, AnyObject>) -> Void in
             let rawPokémonData = response["pokemon"] as! NSArray
@@ -135,10 +142,23 @@ public class SwiftyPoke {
         return nil
     }
 
+    /**
+     Returns the cached Pokémon in the Pokédex. Will return an empty Array if fillNationalPokédex is not initially called
+
+     - returns: Array of Pokémon
+     */
     public static func getPokédex() -> [Pokémon] {
         return Array(SwiftyPoke.shared.pokémon.values).sort { $0.nationalID < $1.nationalID }
     }
 
+    /**
+    Fetches complete Pokémon record; however, sprite, moves, etc, only contain preliminary data. Pass into corresponding fetch function to get complete data. Fetched Pokémon is then cached. Will return immediately if already cached.
+     
+     - parameter pokémon: Pokémon to fetch
+     - parameter completion: completion handler to call once the pokémon is ready to be returned
+     
+     - returns: complete Pokémon record
+     */
     public static func getPokémon(pokémon: Pokémon, completion: (pokémon: Pokémon) -> Void) {
         if let cached = SwiftyPoke.shared.checkForCache(pokémon) as? Pokémon {
             completion(pokémon: cached)
@@ -154,6 +174,14 @@ public class SwiftyPoke {
         }
     }
 
+    /**
+     Fetches complete Type record; types it effects will be lite records and will need to passed in to this function to fetch full record. Fetched Type is then cached. Will return immediately if already cached.
+     
+     - parameter type: Type to fetch
+     - parameter completion: completion handler to call once the Type is ready to be returned
+     
+     - returns: complete Type record
+     */
     public static func getType(type: Type, completion: (type: Type) -> Void) {
         if let cached = SwiftyPoke.shared.checkForCache(type) as? Type {
             completion(type: cached)
@@ -168,6 +196,14 @@ public class SwiftyPoke {
         }
     }
 
+    /**
+     Fetches complete Move record. Fetched move is then cached. Will return immediately if already cached.
+
+     - parameter type: Move to fetch
+     - parameter completion: completion handler to call once the Move is ready to be returned
+
+     - returns: complete Move record
+     */
     public static func getMove(move: Move, completion: (move: Move) -> Void) {
         if let cached = SwiftyPoke.shared.checkForCache(move) as? Move {
             completion(move: cached)
@@ -182,6 +218,14 @@ public class SwiftyPoke {
         }
     }
 
+    /**
+     Fetches complete Ability record. Fetched Ability is then cached. Will return immediately if already cached.
+
+     - parameter type: Move to Ability
+     - parameter completion: completion handler to call once the Ability is ready to be returned
+
+     - returns: complete Ability record
+     */
     public static func getAbility(ability: Ability, completion: (ability: Ability) -> Void) {
         if let cached = SwiftyPoke.shared.checkForCache(ability) as? Ability {
             completion(ability: cached)
@@ -196,6 +240,14 @@ public class SwiftyPoke {
         }
     }
 
+    /**
+     Fetches complete EggGroup record. Fetched EggGroup is then cached. Will return immediately if already cached.
+
+     - parameter type: Move to EggGroup
+     - parameter completion: completion handler to call once the EggGroup is ready to be returned
+
+     - returns: complete EggGroup record
+     */
     public static func getEggGroup(eggGroup: EggGroup, completion: (eggGroup: EggGroup) -> Void) {
         if let cached = SwiftyPoke.shared.checkForCache(eggGroup) as? EggGroup {
             completion(eggGroup: cached)
@@ -210,6 +262,14 @@ public class SwiftyPoke {
         }
     }
 
+    /**
+     Fetches complete Description record. Fetched Description is then cached. Will return immediately if already cached.
+
+     - parameter type: Move to Description
+     - parameter completion: completion handler to call once the Description is ready to be returned
+
+     - returns: complete Description record
+     */
     public static func getDescription(description: Description, completion: (description: Description) -> Void) {
         if let cached = SwiftyPoke.shared.checkForCache(description) as? Description {
             completion(description: cached)
@@ -224,6 +284,14 @@ public class SwiftyPoke {
         }
     }
 
+    /**
+     Fetches complete Sprite record. Fetched Sprite is then cached. Will return immediately if already cached.
+
+     - parameter type: Move to Sprite
+     - parameter completion: completion handler to call once the Sprite is ready to be returned
+
+     - returns: complete Sprite record
+     */
     public static func getSprite(sprite: Sprite, completion: (sprite: Sprite) -> Void) {
         if let cached = SwiftyPoke.shared.checkForCache(sprite) as? Sprite {  // check local cache
             completion(sprite: cached)
@@ -250,6 +318,14 @@ public class SwiftyPoke {
         }
     }
 
+    /**
+     Fetches complete Game record. Fetched Game is then cached. Will return immediately if already cached.
+
+     - parameter type: Move to Game
+     - parameter completion: completion handler to call once the Game is ready to be returned
+
+     - returns: complete Game record
+     */
     public static func getGame(game: Game, completion: (game: Game) -> Void) {
         if let cached = SwiftyPoke.shared.checkForCache(game) as? Game {
             completion(game: cached)

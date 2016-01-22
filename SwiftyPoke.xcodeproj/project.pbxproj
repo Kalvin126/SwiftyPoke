@@ -3,25 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		863807C41C31D250006C08CC /* SwiftyPoke.h in Headers */ = {isa = PBXBuildFile; fileRef = 863807C31C31D250006C08CC /* SwiftyPoke.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		863807CD1C31D603006C08CC /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863807CB1C31D603006C08CC /* Pokemon.swift */; };
-		863807CE1C31D603006C08CC /* SwiftyPoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863807CC1C31D603006C08CC /* SwiftyPoke.swift */; };
+		86621F7D1C50AF6E0077D9A1 /* SwiftyPoke.h in Headers */ = {isa = PBXBuildFile; fileRef = 86621F7C1C50AF6E0077D9A1 /* SwiftyPoke.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86621F861C50AFA10077D9A1 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86621F841C50AFA10077D9A1 /* Pokemon.swift */; };
+		86621F871C50AFA10077D9A1 /* SwiftyPoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86621F851C50AFA10077D9A1 /* SwiftyPoke.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		863807C01C31D250006C08CC /* SwiftyPoke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyPoke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		863807C31C31D250006C08CC /* SwiftyPoke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SwiftyPoke.h; path = ../SwiftyPoke/SwiftyPoke.h; sourceTree = "<group>"; };
-		863807C51C31D250006C08CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../SwiftyPoke/Info.plist; sourceTree = "<group>"; };
-		863807CB1C31D603006C08CC /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pokemon.swift; path = ../SwiftyPoke/Pokemon.swift; sourceTree = "<group>"; };
-		863807CC1C31D603006C08CC /* SwiftyPoke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyPoke.swift; path = ../SwiftyPoke/SwiftyPoke.swift; sourceTree = "<group>"; };
+		86621F791C50AF6E0077D9A1 /* SwiftyPoke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyPoke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86621F7C1C50AF6E0077D9A1 /* SwiftyPoke.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyPoke.h; sourceTree = "<group>"; };
+		86621F7E1C50AF6E0077D9A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86621F841C50AFA10077D9A1 /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		86621F851C50AFA10077D9A1 /* SwiftyPoke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPoke.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		863807BC1C31D250006C08CC /* Frameworks */ = {
+		86621F751C50AF6E0077D9A1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -31,100 +31,99 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		863807B61C31D250006C08CC = {
+		86621F6F1C50AF6E0077D9A1 = {
 			isa = PBXGroup;
 			children = (
-				863807C21C31D250006C08CC /* SwiftyPoke */,
-				863807C11C31D250006C08CC /* Products */,
+				86621F7B1C50AF6E0077D9A1 /* SwiftyPoke */,
+				86621F7A1C50AF6E0077D9A1 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		863807C11C31D250006C08CC /* Products */ = {
+		86621F7A1C50AF6E0077D9A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				863807C01C31D250006C08CC /* SwiftyPoke.framework */,
+				86621F791C50AF6E0077D9A1 /* SwiftyPoke.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		863807C21C31D250006C08CC /* SwiftyPoke */ = {
+		86621F7B1C50AF6E0077D9A1 /* SwiftyPoke */ = {
 			isa = PBXGroup;
 			children = (
-				863807C31C31D250006C08CC /* SwiftyPoke.h */,
-				863807CC1C31D603006C08CC /* SwiftyPoke.swift */,
-				863807CB1C31D603006C08CC /* Pokemon.swift */,
-				863807C51C31D250006C08CC /* Info.plist */,
+				86621F7C1C50AF6E0077D9A1 /* SwiftyPoke.h */,
+				86621F841C50AFA10077D9A1 /* Pokemon.swift */,
+				86621F851C50AFA10077D9A1 /* SwiftyPoke.swift */,
+				86621F7E1C50AF6E0077D9A1 /* Info.plist */,
 			);
-			name = SwiftyPoke;
-			path = "SwiftyPoké";
+			path = SwiftyPoke;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		863807BD1C31D250006C08CC /* Headers */ = {
+		86621F761C50AF6E0077D9A1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				863807C41C31D250006C08CC /* SwiftyPoke.h in Headers */,
+				86621F7D1C50AF6E0077D9A1 /* SwiftyPoke.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		863807BF1C31D250006C08CC /* SwiftyPoke */ = {
+		86621F781C50AF6E0077D9A1 /* SwiftyPoke */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 863807C81C31D250006C08CC /* Build configuration list for PBXNativeTarget "SwiftyPoke" */;
+			buildConfigurationList = 86621F811C50AF6E0077D9A1 /* Build configuration list for PBXNativeTarget "SwiftyPoke" */;
 			buildPhases = (
-				863807BB1C31D250006C08CC /* Sources */,
-				863807BC1C31D250006C08CC /* Frameworks */,
-				863807BD1C31D250006C08CC /* Headers */,
-				863807BE1C31D250006C08CC /* Resources */,
+				86621F741C50AF6E0077D9A1 /* Sources */,
+				86621F751C50AF6E0077D9A1 /* Frameworks */,
+				86621F761C50AF6E0077D9A1 /* Headers */,
+				86621F771C50AF6E0077D9A1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SwiftyPoke;
-			productName = "SwiftyPoké";
-			productReference = 863807C01C31D250006C08CC /* SwiftyPoke.framework */;
+			productName = SwiftyPoke;
+			productReference = 86621F791C50AF6E0077D9A1 /* SwiftyPoke.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		863807B71C31D250006C08CC /* Project object */ = {
+		86621F701C50AF6E0077D9A1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Red Panda";
 				TargetAttributes = {
-					863807BF1C31D250006C08CC = {
+					86621F781C50AF6E0077D9A1 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = N6A2S4TCDQ;
 					};
 				};
 			};
-			buildConfigurationList = 863807BA1C31D250006C08CC /* Build configuration list for PBXProject "SwiftyPoke" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = 86621F731C50AF6E0077D9A1 /* Build configuration list for PBXProject "SwiftyPoke" */;
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 863807B61C31D250006C08CC;
-			productRefGroup = 863807C11C31D250006C08CC /* Products */;
+			mainGroup = 86621F6F1C50AF6E0077D9A1;
+			productRefGroup = 86621F7A1C50AF6E0077D9A1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				863807BF1C31D250006C08CC /* SwiftyPoke */,
+				86621F781C50AF6E0077D9A1 /* SwiftyPoke */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		863807BE1C31D250006C08CC /* Resources */ = {
+		86621F771C50AF6E0077D9A1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,19 +133,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		863807BB1C31D250006C08CC /* Sources */ = {
+		86621F741C50AF6E0077D9A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				863807CE1C31D603006C08CC /* SwiftyPoke.swift in Sources */,
-				863807CD1C31D603006C08CC /* Pokemon.swift in Sources */,
+				86621F871C50AFA10077D9A1 /* SwiftyPoke.swift in Sources */,
+				86621F861C50AFA10077D9A1 /* Pokemon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		863807C61C31D250006C08CC /* Debug */ = {
+		86621F7F1C50AF6E0077D9A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -194,7 +193,7 @@
 			};
 			name = Debug;
 		};
-		863807C71C31D250006C08CC /* Release */ = {
+		86621F801C50AF6E0077D9A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -235,7 +234,7 @@
 			};
 			name = Release;
 		};
-		863807C91C31D250006C08CC /* Debug */ = {
+		86621F821C50AF6E0077D9A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -254,7 +253,7 @@
 			};
 			name = Debug;
 		};
-		863807CA1C31D250006C08CC /* Release */ = {
+		86621F831C50AF6E0077D9A1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -275,25 +274,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		863807BA1C31D250006C08CC /* Build configuration list for PBXProject "SwiftyPoke" */ = {
+		86621F731C50AF6E0077D9A1 /* Build configuration list for PBXProject "SwiftyPoke" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				863807C61C31D250006C08CC /* Debug */,
-				863807C71C31D250006C08CC /* Release */,
+				86621F7F1C50AF6E0077D9A1 /* Debug */,
+				86621F801C50AF6E0077D9A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		863807C81C31D250006C08CC /* Build configuration list for PBXNativeTarget "SwiftyPoke" */ = {
+		86621F811C50AF6E0077D9A1 /* Build configuration list for PBXNativeTarget "SwiftyPoke" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				863807C91C31D250006C08CC /* Debug */,
-				863807CA1C31D250006C08CC /* Release */,
+				86621F821C50AF6E0077D9A1 /* Debug */,
+				86621F831C50AF6E0077D9A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 863807B71C31D250006C08CC /* Project object */;
+	rootObject = 86621F701C50AF6E0077D9A1 /* Project object */;
 }

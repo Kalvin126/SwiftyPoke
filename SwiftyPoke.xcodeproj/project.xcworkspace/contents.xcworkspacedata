@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SwiftyPoke&#x301;.xcodeproj">
+      location = "self:SwiftyPoke.xcodeproj">
    </FileRef>
 </Workspace>
