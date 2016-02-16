@@ -2,6 +2,7 @@ SwiftyPoke
 ==================
 
 Swift Framework Wrapper for Pokémon Database pokeapi.co
+
 Currently, data is only cached by instance/session.
 
 Install: 
