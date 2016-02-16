@@ -118,7 +118,8 @@ public struct Pokémon {
                 types.append(Type(info: rawType as! Dictionary<String, AnyObject>))
             }
 
-        } else {
+        }
+        else {
             // Pokedex short data
             name = (info["name"] as! String).capitalizedString
             resourceURI = info["resource_uri"] as! String
@@ -140,7 +141,6 @@ public struct Evolution {
     public var pokémonNationalID: Int
 
     init(info:Dictionary<String,AnyObject>) {
-
         level = info["level"] as? Int
         method = info["method"] as! String
         detail = info["detail"] as? String
@@ -152,7 +152,7 @@ public struct Evolution {
     }
 }
 
-public struct Type {
+public struct Type : Equatable {
     /** the resource name e.g. Water. */
     public var name: String
     /** the id of the resource. */
@@ -186,18 +186,19 @@ public struct Type {
             created = crea
             modified = info["modified"] as? String
 
-            func processTypes(var arr: Array<Type>, data: Array<Dictionary<String,AnyObject>>){
+            func processTypes(inout arr: [Type], data: Array<Dictionary<String,AnyObject>>){
                 for rawType in data {
                     arr.append(Type(info: rawType))
                 }
             }
 
-            processTypes(   ineffective, data: info["ineffective"       ] as! Array<Dictionary<String, AnyObject>>)
-            processTypes(      noEffect, data: info["no_effect"         ] as! Array<Dictionary<String, AnyObject>>)
-            processTypes(    resistance, data: info["resistance"        ] as! Array<Dictionary<String, AnyObject>>)
-            processTypes(superEffective, data: info["super_effective"   ] as! Array<Dictionary<String, AnyObject>>)
-            processTypes(      weakness, data: info["weakness"          ] as! Array<Dictionary<String, AnyObject>>)
-        } else {
+            processTypes(   &ineffective, data: info["ineffective"      ] as! Array<Dictionary<String, AnyObject>>)
+            processTypes(      &noEffect, data: info["no_effect"        ] as! Array<Dictionary<String, AnyObject>>)
+            processTypes(    &resistance, data: info["resistance"       ] as! Array<Dictionary<String, AnyObject>>)
+            processTypes(&superEffective, data: info["super_effective"  ] as! Array<Dictionary<String, AnyObject>>)
+            processTypes(      &weakness, data: info["weakness"         ] as! Array<Dictionary<String, AnyObject>>)
+        }
+        else {
             // short data
             name = (info["name"] as! String).capitalizedString
             resourceURI = info["resource_uri"] as! String
@@ -206,6 +207,10 @@ public struct Type {
             id = Int(resourceURI.substringWithRange(range))!
         }
     }
+}
+
+public func ==(lhs: Type, rhs: Type) -> Bool {
+    return lhs.name == rhs.name
 }
 
 public struct Move {   // TODO: Lean_type is
@@ -250,7 +255,8 @@ public struct Move {   // TODO: Lean_type is
             category = info["category"] as? String
             pp = info["pp"] as? Int
 
-        } else {
+        }
+        else {
             // short data
             name = (info["name"] as! String).capitalizedString
             resourceURI = info["resource_uri"] as! String
@@ -289,7 +295,8 @@ public struct Ability {
             created = info["created"] as? String
             modified = info["modified"] as? String
             description = desc
-        } else {
+        }
+        else {
             // short data
             name = (info["name"] as! String).capitalizedString
             resourceURI = info["resource_uri"] as! String
@@ -329,7 +336,8 @@ public struct EggGroup {
             for rawPokémon in info["pokemon"] as! NSArray {
                 pokémon.append(Pokémon(info: rawPokémon as! Dictionary<String, AnyObject>))
             }
-        } else {
+        }
+        else {
             // short data
             name = (info["name"] as! String).capitalizedString
             resourceURI = info["resource_uri"] as! String
@@ -372,7 +380,12 @@ public struct Description {
             description = desc
 
             pokémon = Pokémon(info: info["pokemon"] as! Dictionary<String, AnyObject>)
-        } else {
+
+            for rawGame in info["games"] as! NSArray {
+                games.append(Game(info: rawGame as! Dictionary<String, AnyObject>))
+            }
+        }
+        else {
             // short data
             name = (info["name"] as! String).capitalizedString
             resourceURI = info["resource_uri"] as! String
@@ -415,7 +428,8 @@ public struct Sprite {
 
             pokémon = Pokémon(info: (info["pokemon"] as! Dictionary<String, AnyObject>))
             imageURI = img
-        } else {
+        }
+        else {
             // short data
             name = (info["name"] as! String).capitalizedString
             resourceURI = info["resource_uri"] as! String
@@ -457,7 +471,8 @@ public struct Game {
             releaseYear = releaseYr
             generation = info["generation"] as? Int
 
-        } else {
+        }
+        else {
             // short data
             name = (info["name"] as! String).capitalizedString
             resourceURI = info["resource_uri"] as! String
