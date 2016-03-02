@@ -193,10 +193,61 @@ public final class SwiftyPoke {
         getPokémon(shared.pokémon[id]!, completion: completion)
     }
 
+    /**
+     Fetches a random Pokémon; however, sprite, moves, etc, only contain preliminary data. Pass into corresponding fetch function to get complete data. Fetched Pokémon is then cached. Will return immediately if already cached.
+
+     - parameter completion: completion handler to call once the pokémon is ready to be returned
+     */
     public static func getRandomPokémon(completion: (pokémon: Pokémon) -> Void) {
         let rand = arc4random_uniform(UInt32(shared.pokémon.count))
         let pokémon = Array(shared.pokémon.values)[Int(rand)]
         getPokémon(pokémon, completion: completion)
+    }
+
+    /**
+     Fetches all Pokémon with a certain Type; however, sprite, moves, etc, only contain preliminary data. Pass into corresponding fetch function to get complete data. This will not get pokemon that is not yet cached.
+
+     - parameter type: Pokémon's type to fetch
+     - parameter completion: completion handler to call once the pokémon is ready to be returned
+     */
+    public static func getPokémonByType(type: Type) -> [Pokémon] {
+        let pokémon = shared.pokémon.values.filter { $0.types.contains(type) }
+
+        return Array(pokémon)
+    }
+
+    /**
+     Fetches all Pokémon with a certain Type by a string; however, sprite, moves, etc, only contain preliminary data. Pass into corresponding fetch function to get complete data. This will not get pokemon that is not yet cached.
+
+     - parameter type: Pokémon's type to fetch
+     - parameter completion: completion handler to call once the pokémon is ready to be returned
+     */
+    public static func getPokémonWithPartialTypeString(typeString: String) -> [Pokémon] {
+        let pokémon = shared.pokémon.values.filter {
+            var match = false
+
+            $0.types.forEach {
+                if $0.name.lowercaseString.containsString(typeString.lowercaseString) {
+                    match = true
+                }
+            }
+
+            return match
+        }
+
+        return Array(pokémon)
+    }
+
+    /**
+     Fetches all Pokémon whos name is related to a string; however, sprite, moves, etc, only contain preliminary data. Pass into corresponding fetch function to get complete data.
+
+     - parameter type: Pokémon's type to fetch
+     - parameter completion: completion handler to call once the pokémon is ready to be returned
+     */
+    public static func findPokémonContainingString(string: String) -> [Pokémon] {
+        let pokémon = shared.pokémon.values.filter { $0.name.lowercaseString.containsString(string.lowercaseString) }
+
+        return Array(pokémon)
     }
 
     /**
@@ -280,7 +331,6 @@ public final class SwiftyPoke {
             completion(ability: retAbility)
         }
     }
-
 
     /**
      Fetches all Egg Group records. Fetched EggGroups are then cached. Will return immediately if already cached.

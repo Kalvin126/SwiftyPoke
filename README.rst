@@ -20,8 +20,7 @@ To enable caching add this to application:didFinishLaunchingWithOptions: :
 Usage:
 ............
 
-When you want to retrieve a resource, call SwiftyPoke.shared.get*****(resource) to fetch or retrieve a cached version.
-fillNationPokédex: must be called at application initialization first.
+When you want to retrieve a resource, call SwiftyPoke.get*****(resource) to fetch it or retrieve from cache.
 
 .. code-block:: swift
 
